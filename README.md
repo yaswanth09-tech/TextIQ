@@ -84,31 +84,31 @@ TextIQ/
 
 The `app.py` file is structured into several key sections:
 
-**Configuration Section** (Lines 1-50)
+**Configuration Section** 
 - Import statements and dependency checks
 - Environment variable loading
 - Model definitions and default settings
 - Constants for chat history storage
 
-**Chat History Functions** (Lines 52-95)
+**Chat History Functions** 
 - `save_chat_history()` - Persists current conversation to JSON
 - `load_all_chats()` - Retrieves all saved conversations
 - `load_chat(chat_id)` - Loads a specific conversation
 - `delete_chat(chat_id)` - Removes a conversation from history
 
-**CSS Styling** (Lines 97-380)
+**CSS Styling** 
 - `load_custom_css(dark_mode)` - Applies theme-specific styles
 - Dynamic color schemes for dark and light modes
 - Custom chat bubble styling similar to modern messaging apps
 - Responsive design elements
 
-**AI Response Generation** (Lines 382-420)
+**AI Response Generation** 
 - `generate_response()` - Handles API communication
 - Message formatting for Gemini API
 - Error handling for rate limits and API issues
 - Response streaming and processing
 
-**User Interface** (Lines 422-end)
+**User Interface** 
 - Session state initialization
 - Sidebar controls and navigation
 - Main chat area with message display
@@ -726,3 +726,6 @@ This project is available under the MIT License. You're free to use, modify, and
 ---
 
 **TextIQ** - Built with Streamlit and Google Gemini AI
+
+Live Demo
+Try it now: https://textiq-chat.streamlit.app/
