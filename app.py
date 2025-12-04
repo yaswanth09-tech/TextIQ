@@ -24,8 +24,11 @@ load_dotenv()
 # ============================================================================
 # CONFIGURATION
 # ============================================================================
-
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+# Support both Streamlit Cloud secrets and local .env
+try:
+    GEMINI_API_KEY = st.secrets.get("GEMINI_API_KEY", "")
+except:
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 # AI Models (internal use only)
 MODELS = {
