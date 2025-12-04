@@ -464,31 +464,32 @@ def generate_response(messages: List[Dict], system_prompt: str, model_name: str,
         genai.configure(api_key=GEMINI_API_KEY)
         
         model = genai.GenerativeModel(
-    model_name=model_name,
-    generation_config={
-        "temperature": temperature,
-        "max_output_tokens": 2048,
-    }
-)
+            model_name=model_name,
+            generation_config={
+                "temperature": temperature,
+                "max_output_tokens": 2048,
+            }
+        )
         
         history = []
-# Add system prompt as first message
-if system_prompt:
-    history.append({
-        "role": "user",
-        "parts": [system_prompt]
-    })
-    history.append({
-        "role": "model",
-        "parts": ["Understood. I'll follow these instructions."]
-    })
-
-# Add conversation history
-for msg in messages[:-1]:
-    history.append({
-        "role": "user" if msg["role"] == "user" else "model",
-        "parts": [msg["content"]]
-    })
+        
+        # Add system prompt as first exchange
+        if system_prompt:
+            history.append({
+                "role": "user",
+                "parts": [system_prompt]
+            })
+            history.append({
+                "role": "model",
+                "parts": ["Understood. I'll follow these instructions."]
+            })
+        
+        # Add conversation history
+        for msg in messages[:-1]:
+            history.append({
+                "role": "user" if msg["role"] == "user" else "model",
+                "parts": [msg["content"]]
+            })
         
         chat = model.start_chat(history=history)
         response = chat.send_message(messages[-1]["content"])
